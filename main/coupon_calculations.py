@@ -50,7 +50,7 @@ final_total = tax_added_subtotal + shipping
 
 # prints out customer order details all the way until final total
 print(f'Original Purchase: ${purchase_amount: 5.2f}\nAfter Cash Discount: ${cash_off_subtotal: 5.2f}\nAfter Percent Discount:'
-      f' ${percent_off_subtotal: 5.2f}\nWith Taxes Added: {tax_added_subtotal: 5.2f}\nYour'
+      f' ${percent_off_subtotal: 5.2f}\nWith Taxes Added: ${tax_added_subtotal: 5.2f}\nYour'
       f' final total with shipping is: ${final_total: 5.2f}')
 
 """
