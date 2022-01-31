@@ -14,3 +14,8 @@ Shipping is free for $50 and over. Order of calculation: cash off coupons ($5 or
 # file for constant variables
 DIVIDE_FOR_PERCENT = 100
 TAX = .06
+
+SHIP_TIER_1 = 10
+SHIP_TIER_2 = 30
+SHIP_TIER_3 = 50
+

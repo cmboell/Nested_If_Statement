@@ -21,11 +21,50 @@ purchase_amount = float(input('Enter the total amount of your purchase: '))
 cash_off_coupon = int(input('Enter your cash off coupon amount (5 or 10): '))
 percent_coupon = int(input('Enter your percent discount coupon (10, 15, or 20): '))
 
+# nested if statement to make sure we are not giving free stuff
+if purchase_amount <= 5:
+    cash_off_coupon = 0
+    print('Your order must be more than $5 dollars to use cash off coupon')
+elif purchase_amount > 5:
+    if purchase_amount <= 10:
+        cash_off_coupon = 5
+        print('Your order was less than $10, we have given you $5 off')
+
 # calculations to take off cash discount, percent discount, and to add tax
 cash_off_subtotal = purchase_amount - cash_off_coupon
 percent_off_subtotal = cash_off_subtotal - ((percent_coupon/constants.DIVIDE_FOR_PERCENT) * cash_off_subtotal)
 tax_added_subtotal = percent_off_subtotal + (constants.TAX * percent_off_subtotal)
 
+# nested if statement for shipping costs
+if tax_added_subtotal <= constants.SHIP_TIER_1:
+    shipping = 5.95
+    if constants.SHIP_TIER_1 < tax_added_subtotal <= constants.SHIP_TIER_2:
+        shipping = 7.95
+        if constants.SHIP_TIER_2 < tax_added_subtotal <= constants.SHIP_TIER_3:
+            shipping = 11.95
+else:
+    shipping = 0
 
+# variable to calculate final total
+final_total = tax_added_subtotal + shipping
 
+# prints out customer order details all the way until final total
+print(f'Original Purchase: ${purchase_amount: 5.2f}\nAfter Cash Discount: ${cash_off_subtotal: 5.2f}\nAfter Percent Discount:'
+      f' ${percent_off_subtotal: 5.2f}\nWith Taxes Added: {tax_added_subtotal: 5.2f}\nYour'
+      f' final total with shipping is: ${final_total: 5.2f}')
 
+"""
+Tests: 
+Input: 15.99   output:  Original Purchase: $ 15.99             
+       5       After Cash Discount: $ 10.99
+       20      After Percent Discount: $ 8.79
+               With Taxes Added:  9.32
+               Your final total with shipping is: $ 15.27
+
+Input: 5       Your order must be more than $5 dollars to use cash off coupon
+       10      Original Purchase: $ 5.00
+       15      After Cash Discount: $ 5.00
+               After Percent Discount: $ 4.25
+               With Taxes Added:  4.50
+               Your final total with shipping is: $ 10.46
+"""
