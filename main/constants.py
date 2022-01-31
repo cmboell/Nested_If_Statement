@@ -12,10 +12,14 @@ up to $10 dollars, shipping is $5.95, $10 and up to $30 dollars, shipping is $7.
 Shipping is free for $50 and over. Order of calculation: cash off coupons ($5 or $10),%(5%,15%, or 20%),tax, and then shipping.
 """
 # file for constant variables
+FIVE = 5
+TEN = 10
+
 DIVIDE_FOR_PERCENT = 100
 TAX = .06
 
 SHIP_TIER_1 = 10
 SHIP_TIER_2 = 30
 SHIP_TIER_3 = 50
+
 

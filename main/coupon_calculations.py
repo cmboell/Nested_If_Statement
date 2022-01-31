@@ -25,10 +25,10 @@ percent_coupon = int(input('Enter your percent discount coupon (10, 15, or 20): 
 if purchase_amount <= 5:
     cash_off_coupon = 0
     print('Your order must be more than $5 dollars to use cash off coupon')
-elif purchase_amount > 5:
-    if purchase_amount <= 10:
+elif purchase_amount > constants.FIVE:
+    if purchase_amount <= constants.TEN:
         cash_off_coupon = 5
-        print('Your order was less than $10, we have given you $5 off')
+        print('Your order was less than or equal to $10, we have given you $5 off')
 
 # calculations to take off cash discount, percent discount, and to add tax
 cash_off_subtotal = purchase_amount - cash_off_coupon
